@@ -7,6 +7,8 @@ idf_component_register(SRCS
                             "usb_direct.c"
                             "ringbuf.c"
                             "usb_reader.c"
+                            "power_control.c"
+                            "power_api.c"
                        INCLUDE_DIRS 
                             "."
                        REQUIRES 
@@ -19,5 +21,6 @@ idf_component_register(SRCS
                             esp_event 
                             esp_timer
                             esp_driver_gpio
+                            esp_http_server
                             #esp_driver_usb_serial_jtag
                        )

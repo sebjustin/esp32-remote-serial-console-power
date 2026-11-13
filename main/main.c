@@ -11,6 +11,7 @@
 #include "usb_direct.h"
 #include "ringbuf.h"
 #include "usb_reader.h"
+#include "power_api.h"
 
 // Must be power of 2
 #define USB_READ_BUFFER_SIZE 64*1024
@@ -55,6 +56,7 @@ void app_main(void) {
     ESP_LOGI(TAG, "Valid config found - starting Wi-Fi and TCP server");
     
     wifi_manager_start();
+    power_api_start();
     
     if (xTaskCreate(tcp_server_task, "tcp_server", 4096, (void *)rb, 1, NULL) != pdPASS) {
         ESP_LOGE(TAG, "Failed to create tcp_server task");
